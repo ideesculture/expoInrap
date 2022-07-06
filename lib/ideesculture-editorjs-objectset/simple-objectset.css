@@ -1,0 +1,43 @@
+.diapo {
+    background-color: #fff4d5;
+    padding-left: 0;
+    padding-right: 0;
+}
+.rightcol h2 {
+    margin-top: 70px;
+    text-transform: none;
+    font-family: 'Gidugu', sans-serif;
+    font-size: 30px;
+    line-height: 0.75em;
+    letter-spacing: normal;
+    font-weight: normal;
+}
+.rightcol h3 {
+    text-transform: none;
+    font-family: 'Gidugu', sans-serif;
+    line-height: 0.75em;
+    letter-spacing: normal;
+    font-weight: normal;
+    font-style: italic;
+    font-size: 13px;
+}
+
+.leftcol img{
+    height: 200px;
+    min-height: 200px;
+    width: 90%;
+    min-width: auto;
+    max-width: none;
+    object-fit: contain;
+}
+
+.leftcol {
+    display: flex;
+    justify-content: space-around;
+}
+
+.ulColumns{
+    -webkit-column-count: 4;
+    -moz-column-count: 4;
+    column-count: 4;
+}
