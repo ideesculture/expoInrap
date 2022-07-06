@@ -29,10 +29,6 @@ $rows = $this->getVar("content");
         <option value="3">Exposition Adulte</option>
         <option value="4">Texte</option>
         <option value="5">Bloc de statistique</option>
-        <option value="6">Lien vers une ressource extérieur</option>
-        <option value="7">Lieu de découverte</option>
-        <option value="8">Lieu de présentation</option>
-
     </select><br />
     <div id="search-exhibition-jeunesse" class="search" style="">
         <input id="exhibition_jeunesse_id_lookup" class="exhibition_jeunesse_id_-input lookupBg ui-autocomplete-input" type="text" placeholder="Sélectionner une exposition jeunesse" style="width:100%;" />
@@ -50,18 +46,7 @@ $rows = $this->getVar("content");
         <div id="textInput">Insérer du texte</div>
         <div id="actu_preview" class="preview" style="display:none;"></div>
     </div>
-    <div id="search-url" class="search" style="display:none;">
-        <input id="url_id_lookup" class="url_id-input" type="text" placeholder="Insérer une adresse URL" style="width:100%;" />
-        <div id="url_preview" class="preview" style="display:none;"></div>
-    </div>
-    <div id="search-decouverte" class="search" style="display:none;">
-        <input id="decouverte_id_lookup" class="decouverte_id-input lookupBg ui-autocomplete-input" type="text" placeholder="Sélectionner un lieu de découverte" style="width:100%;" />
-        <div id="decouverte_preview" class="preview" style="display:none;"></div>
-    </div>
-    <div id="search-presentation" class="search" style="display:none;">
-        <input id="presentation_id_lookup" class="presentation_id-input lookupBg ui-autocomplete-input" type="text" placeholder="Sélectionner un lieu de présentation" style="width:100%;" />
-        <div id="presentation_preview" class="preview" style="display:none;"></div>
-    </div>
+    
     <input name="id" id="content_id" type="hidden" value="" />
     <div id="title" style="width:100%;padding:6px 0;font-size:14px;"></div>
     <br />
@@ -163,18 +148,11 @@ $rows = $this->getVar("content");
             $(".search").hide();
             $("#texte").show();
         }
-        if ($(this).val() == 6) {
+        if ($(this).val() == 4) {
             $(".search").hide();
-            $("#search-url").show();
+            $("#texte").show();
         }
-        if ($(this).val() == 7) {
-            $(".search").hide();
-            $("#search-decouverte").show();
-        }
-        if ($(this).val() == 8) {
-            $(".search").hide();
-            $("#search-presentation").show();
-        }
+        
 
     });
 
@@ -459,33 +437,7 @@ $rows = $this->getVar("content");
             });
         });
 
-        $('#pedago_id_lookup').keyup(function() {
-            var searchField = $('#pedago_id_lookup').val();
-            console.log(searchField);
-            $.get('<?php print __CA_URL_ROOT__; ?>/index.php/exhibitionCMS/Home/searchpedagoJson/search/' + searchField, function(data) {
-                $('#pedago_preview').html(data);
-                if ($('#pedago_preview').html() == "") {
-                    $('#pedago_preview').hide();
-                } else {
-                    $('#pedago_preview').show();
-                }
-                console.log(data);
-            });
-        });
-
-        $('#partenaire_id_lookup').keyup(function() {
-            var searchField = $('#partenaire_id_lookup').val();
-            console.log(searchField);
-            $.get('<?php print __CA_URL_ROOT__; ?>/index.php/exhibitionCMS/Home/searchpartenaireJson/search/' + searchField, function(data) {
-                $('#partenaire_preview').html(data);
-                if ($('#partenaire_preview').html() == "") {
-                    $('#partenaire_preview').hide();
-                } else {
-                    $('#partenaire_preview').show();
-                }
-                console.log(data);
-            });
-        });
+       
     });
 </script>
 
