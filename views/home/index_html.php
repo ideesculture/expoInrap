@@ -44,7 +44,9 @@ $rows = $this->getVar("content");
     </div>
     <div id="texte" class="search" style="display:none;">
         <div id="textInput">Insérer du texte</div>
-        <div id="actu_preview" class="preview" style="display:none;"></div>
+    </div>
+    <div id="statistique" class="search" style="display:none;">
+        <div id="">Ajout d'un bloc de statistique après enregistrement.</div>
     </div>
     
     <input name="id" id="content_id" type="hidden" value="" />
@@ -155,6 +157,10 @@ $rows = $this->getVar("content");
         if ($(this).val() == 4) {
             $(".search").hide();
             $("#texte").show();
+        }
+        if ($(this).val() == 5) {
+            $(".search").hide();
+            $("#statistique").show();
         }
         
 
@@ -519,11 +525,17 @@ function print_content($i)
 
             }
 
+            print '<div style="background-image: url('.$image.'); background-size: cover; height: 100%;display: flex;flex-direction: column;position: relative;opacity: 0.7; justify-content: center;"><span style="float:left;color:white;">' . $i. '</span><p style="text-align: center;background-color:white;"><b>' . $title . '</b></p></div>';
 
             break;
 
+        case 5:
+            print '<div style="background-color: #571514; height: 100%;display: flex;flex-direction: column;position: relative;opacity: 0.7; justify-content: center;"><span style="float:left;color:white;">' . $i. '</span><p style="text-align: center;background-color:white;">Bloc statisitque</p></div>';
+            break;
+
+
     endswitch;
 
-    print '<div style="background-image: url('.$image.'); background-size: cover; height: 100%;display: flex;flex-direction: column;position: relative;opacity: 0.7; justify-content: center;"><span style="float:left;color:white;">' . $i. '</span><p style="text-align: center;background-color:white;"><b>' . $title . '</b></p></div>';
+   
 }
 ?>

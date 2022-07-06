@@ -117,18 +117,22 @@
 			$result = $result->getAllRows();
 			if (empty($result)){
 				// Si pas de donnée dans la case, on ajoute
-				if ($type != 4){
-					$query = "INSERT INTO plugin_cms_home (`type`, `cell_id`, `value_id`) VALUE (${type}, ${zone}, ${value})";
-				}else{
+				if ($type == 5){
+					$query = "INSERT INTO plugin_cms_home (`type`, `cell_id`) VALUE (${type}, ${zone})";
+				}else if ($type==4){
 					$query = "INSERT INTO plugin_cms_home (`type`, `cell_id`, `text_content`) VALUE (${type}, ${zone}, ${value})";
+				}else {
+					$query = "INSERT INTO plugin_cms_home (`type`, `cell_id`, `value_id`) VALUE (${type}, ${zone}, ${value})";
 				}
 				return $o_data->query($query);
 
 			}else{
-				if ($type != 4){
-					$query = "REPLACE INTO plugin_cms_home (`type`, `cell_id`, `value_id`) VALUE (${type}, ${zone}, ${value})";
-				}else{
+				if ($type == 5){
+					$query = "REPLACE INTO plugin_cms_home (`type`, `cell_id`) VALUE (${type}, ${zone})";
+				}else if ($type==4){
 					$query = "REPLACE INTO plugin_cms_home (`type`, `cell_id`, `text_content`) VALUE (${type}, ${zone}, ${value})";
+				}else {
+					$query = "REPLACE INTO plugin_cms_home (`type`, `cell_id`, `value_id`) VALUE (${type}, ${zone}, ${value})";
 				}
 				return $o_data->query($query);
 			}
