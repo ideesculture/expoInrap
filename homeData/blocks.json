@@ -1,1 +1,1 @@
-{"numberOfRow":2,"rows":{"1":{"1":{"colspan":"2"},"2":{"type":"hidden"},"3":{}},"2":{"4":{},"5":{},"6":{}}}}
+{"numberOfRow":3,"rows":{"1":{"1":{"colspan":"2","allMergedCell":"2"},"2":{"type":"hidden"},"3":{}},"2":{"4":{},"5":{},"6":{"allMergedCell":"9"}},"3":{"7":{},"8":{},"9":{}}}}

@@ -53,6 +53,7 @@
  		# -------------------------------------------------------
  		public function Index($type="") {
            
+			//die();
 			$blocks = $this->GetHomeContent2();
 
             $this->view->setVar("numberOfRow", $blocks["numberOfRow"]);
@@ -63,13 +64,14 @@
 
         public function SaveBlock(){
             $json = $this->request->getParameter("jsonTable", pString);
-            file_put_contents($this->dir."/homeData/blocks.json", $json);
-
+            file_put_contents($this->dir."homeData/blocks.json", $json);
 			$blocks = $this->GetHomeContent2();
+
+			var_dump($blocks);
 
             $this->view->setVar("numberOfRow", $blocks["numberOfRow"]);
             $this->view->setVar("content", $blocks["rows"]);
-            $this->render("home/index_html.php");
+			$this->redirect(caNavUrl($this->request, '*', '*','Index'));
         }
 
 		

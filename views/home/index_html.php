@@ -64,6 +64,10 @@ $rows = $this->getVar("content");
             if ($cell["type"] == "hidden") {
                 print "style='display:none' ";
             }
+
+            if ($cell["allMergedCell"]){
+                print "data-allmergedcell='".$cell["allMergedCell"]."' ";
+            }
             
             if ($cell["rowspan"]) {
                 print "rowspan='" . $cell["rowspan"] . "' ";
@@ -200,6 +204,9 @@ $rows = $this->getVar("content");
                 }
                 if ($(this).css("display") == "none") {
                     cell["type"] = "hidden";
+                }
+                if ($(this).attr("data-allmergedcell")){
+                    cell["allMergedCell"] = $(this).attr("data-allmergedcell");
                 }
                 row[cellId] = cell;
             })
