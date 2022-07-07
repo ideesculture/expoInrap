@@ -79,6 +79,7 @@
 		public function Save2(){
 			$vn_zone = $this->request->getParameter("zone", pInteger);
             $image = $this->request->getParameter("image", pString);
+			$text = $this->request->getParameter("textInput", pString);
 			if($this->request->getRequestMethod() == "POST") {
                 // Get posted data 
                $vn_id = $this->request->getParameter("id", pInteger);
@@ -88,7 +89,9 @@
                     $this->getView()->setVar("content", $this->GetHomeContent2());
                     $this->render('home/index_html.php');
                } else {
-                    $vb_result = $this->SaveHomeContent2($vn_zone,$vn_type,$vn_id);
+				 	$value = ($vn_type == 4) ? $text : $vn_id;
+					
+                    $vb_result = $this->SaveHomeContent2($vn_zone,$vn_type,$value);
                     if(!$vb_result) {
                         // Not saved, redirect to home
                         $this->redirect(caNavUrl($this->request, '*', '*','Index'));
@@ -120,7 +123,11 @@
 				if ($type == 5){
 					$query = "INSERT INTO plugin_cms_home (`type`, `cell_id`) VALUE (${type}, ${zone})";
 				}else if ($type==4){
-					$query = "INSERT INTO plugin_cms_home (`type`, `cell_id`, `text_content`) VALUE (${type}, ${zone}, ${value})";
+					//var_dump($value);
+					$value = base64_encode($value);
+
+					//die(var_dump($value));
+					$query = "INSERT INTO plugin_cms_home (`type`, `cell_id`, `text_content`) VALUE (${type}, ${zone}, '${value}')";
 				}else {
 					$query = "INSERT INTO plugin_cms_home (`type`, `cell_id`, `value_id`) VALUE (${type}, ${zone}, ${value})";
 				}
@@ -130,6 +137,7 @@
 				if ($type == 5){
 					$query = "REPLACE INTO plugin_cms_home (`type`, `cell_id`) VALUE (${type}, ${zone})";
 				}else if ($type==4){
+					$value = base64_encode($value);
 					$query = "REPLACE INTO plugin_cms_home (`type`, `cell_id`, `text_content`) VALUE (${type}, ${zone}, ${value})";
 				}else {
 					$query = "REPLACE INTO plugin_cms_home (`type`, `cell_id`, `value_id`) VALUE (${type}, ${zone}, ${value})";

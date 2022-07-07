@@ -486,6 +486,7 @@ $rows = $this->getVar("content");
     #mainContent {
         width: 955px;
         margin-left: 0;
+        position: relative;
         border-left: 2px solid #ddd;
     }
 
@@ -527,6 +528,13 @@ function print_content($i)
 
             print '<div style="background-image: url('.$image.'); background-size: cover; height: 100%;display: flex;flex-direction: column;position: relative;opacity: 0.7; justify-content: center;"><span style="float:left;color:white;">' . $i. '</span><p style="text-align: center;background-color:white;"><b>' . $title . '</b></p></div>';
 
+            break;
+        case 4:
+            if ($result["image"]){
+                $image = $result["image"];
+            }
+            $content = base64_decode($result["text_content"]);
+            print '<div style="background-image: url('.$image.'); background-size: cover; height: 100%;display: flex;flex-direction: column;position: relative;opacity: 0.7; justify-content: center;"><span style="float:left;color:white;">' . $i. '</span><p style="text-align: center;background-color:white;"><b>' . $content . '</b></p></div>';
             break;
 
         case 5:
